@@ -36,7 +36,7 @@ namespace Viewer
 
             script = new Script();
             script.Globals["ClearDrawings"] = (Action)ClearDrawings;
-            script.Globals["CreateDrawing"] = (Action<List<List<List<double>>>>)CreateDrawing;
+            script.Globals["CreateDrawing"] = (Action<int, int, List<List<List<double>>>>)CreateDrawing;
 
             drawings = new List<Drawing>();
 
@@ -49,7 +49,7 @@ namespace Viewer
             BuildPolygons();
         }
 
-        private void CreateDrawing(List<List<List<double>>> table)
+        private void CreateDrawing(int group, int number, List<List<List<double>>> table)
         {
             int count = 1;
 
@@ -77,7 +77,7 @@ namespace Viewer
                 count++;
             }
 
-            var drawing = new Drawing(surfaces.ToArray());
+            var drawing = new Drawing(group, number, surfaces.ToArray());
 
             drawings.Add(drawing);
             BuildPolygons();
@@ -105,7 +105,7 @@ namespace Viewer
                 {
                     Geometry = mesh,
                     Material = redMaterial,
-                    BackMaterial = yellowMaterial
+                    BackMaterial = yellowMaterial 
                 });
             }
         }

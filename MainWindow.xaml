@@ -19,9 +19,10 @@
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem Content="Ready"/>
         </StatusBar>
-        <ht:HelixViewport3D x:Name="View" Background="Black">
+        <ht:HelixViewport3D x:Name="View">
             <ht:SunLight />
             <ModelVisual3D Content="{Binding Model}"/>
+            <ht:GridLinesVisual3D Width="100" Length="100" MinorDistance="1" MajorDistance="1" Thickness="0.01"/>
         </ht:HelixViewport3D>
     </DockPanel>
 </Window>
